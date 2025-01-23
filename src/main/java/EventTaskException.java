@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class EventTaskException {
+public class EventTaskException extends Exception {
+    public EventTaskException(String message) {
+        super(message);
+    }
 }

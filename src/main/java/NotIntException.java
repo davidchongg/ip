@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class NotIntException {
+public class NotIntException extends Exception {
+    public NotIntException(String message) {
+        super(message);
+    }
 }

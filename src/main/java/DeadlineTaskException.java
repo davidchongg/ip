@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class ToDoTaskException {
+public class DeadlineTaskException extends Exception {
+    public DeadlineTaskException(String message) {
+        super(message);
+    }
 }

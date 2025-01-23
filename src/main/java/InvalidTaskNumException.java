@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class InvalidTaskNumException {
+public class InvalidTaskNumException extends Exception {
+    public InvalidTaskNumException(String message) {
+        super(message);
+    }
 }
