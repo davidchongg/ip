@@ -1,8 +1,17 @@
+import java.util.Scanner;
+
 public class Eve {
     public static void main(String[] args) {
         output(greetMessage());
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String command = scanner.nextLine();
+            if (command.equals("bye")) {
+                break;
+            }
+            output(command);
+        }
         output(byeMessage());
-
     }
 
     public static String greetMessage() {
