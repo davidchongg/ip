@@ -2,41 +2,65 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Eve {
-    private static ArrayList<String> commandList;
+    private static ArrayList<Task> taskList;
     public static void main(String[] args) {
-        output(greetMessage());
-        commandList = new ArrayList<String>();
+        greet();
+        taskList = new ArrayList<Task>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            String command = scanner.nextLine();
+            String command = scanner.next();
             if (command.equals("bye")) {
+                bye();
                 break;
             } else if (command.equals("list")) {
-                output(listMessage());
+                list();
+            } else if (command.equals("mark")) {
+                mark(scanner.nextInt());
+            } else if (command.equals("unmark")) {
+                unmark(scanner.nextInt());
             } else {
-                commandList.add(command);
-                output("added: " + command);
+                add(command + scanner.nextLine());
             }
         }
-        output(byeMessage());
     }
 
-    public static String greetMessage() {
-        return "Hello, I'm Eve!\nWhat can I do for you?";
+    public static void greet() {
+        output("Hello, I'm Eve!\nWhat can I do for you?");
     }
 
-    public static String byeMessage() {
-        return "Bye. Hope to see you again soon!";
+    public static void bye() {
+        output( "Bye. Hope to see you again soon!");
     }
 
-    public static String listMessage() {
+    public static void list() {
         String message = "";
         int num = 1;
-        for (String command : commandList) {
-            message += Integer.toString(num) + ". " + command + "\n";
+        for (Task task: taskList) {
+            message += Integer.toString(num) + "." +  task.toString() + "\n";
             num++;
         }
-        return message.trim();
+        output(message.trim());
+    }
+
+    public static void mark(int num) {
+        if (num <= taskList.size()) {
+            taskList.get(num - 1).markAsDone();
+            output("Nice! I've marked this task as done:\n\t"
+                    + taskList.get(num - 1).toString());
+        }
+    }
+
+    public static void unmark(int num) {
+        if (num <= taskList.size()) {
+            taskList.get(num - 1).markAsNotDone();
+            output("OK, I've marked this task as not done yet:\n\t"
+                    + taskList.get(num - 1).toString());
+        }
+    }
+
+    public static void add(String description) {
+        taskList.add(new Task(description));
+        output("added: " + description);
     }
 
     public static void output(String message) {
