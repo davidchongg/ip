@@ -19,7 +19,7 @@ public class Eve {
             } else if (command.equals("unmark")) {
                 unmark(scanner.nextInt());
             } else {
-                add(command + scanner.nextLine());
+                add(command, scanner.nextLine());
             }
         }
     }
@@ -58,9 +58,21 @@ public class Eve {
         }
     }
 
-    public static void add(String description) {
-        taskList.add(new Task(description));
-        output("added: " + description);
+    public static void add(String command, String description) {
+        if (command.equals("todo")) {
+            taskList.add(new ToDo(description));
+        } else if (command.equals("deadline")) {
+            taskList.add(new Deadline(description.split("/by")[0].trim(),
+                    description.split("/by")[1].trim()));
+        } else if (command.equals("event")) {
+            taskList.add(new Event(description.split("/from")[0].trim(),
+                    description.split("/from")[1].split("/to")[0].trim(),
+                    description.split("/from")[1].split("/to")[1].trim()));
+        } else {
+            return;
+        }
+        output("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
+                + "\nNow you have " + Integer.toString(taskList.size()) + " tasks in the list.");
     }
 
     public static void output(String message) {
