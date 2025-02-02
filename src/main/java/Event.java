@@ -8,6 +8,11 @@ public class Event extends Task {
         this.to = to;
     }
 
+    @Override
+    public String toDataString() {
+        return "T | " + super.getStatusIcon() + " | " + this.description + " | " + this.from + " | " + this.to;
+    }
+
     public String toString() {
         return "[E]" + super.toString() + " (from: " + this.from + " to: " + this.to + ")";
     }
