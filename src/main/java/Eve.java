@@ -1,11 +1,13 @@
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 public class Eve {
     private static ArrayList<Task> taskList;
@@ -37,6 +39,8 @@ public class Eve {
             } else if (command.equals("list")) {
                 list();
                 return;     // Don't need update file
+            } else if (command.equals("clear")) {
+                clearList();
             } else if (command.equals("mark")) {
                 int num;
                 try {
@@ -84,17 +88,21 @@ public class Eve {
         }
     }
 
-    public static Task parseStringIntoTask(String line) {
+    public static Task parseStringIntoTask(String line) throws DateTimeParseException {
         String[] parts = line.split(" \\| ");
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
         Task task;
         switch (parts[0]) {
         case "D":
-            task = new Deadline(parts[2], parts[3]);
+            task = new Deadline(parts[2], DateTime.parseString(parts[3]));
             break;
         case "E":
-            task = new Event(parts[2], parts[3], parts[3]);
+            task = new Event(parts[2], DateTime.parseString(parts[3]), DateTime.parseString(parts[4]));
             break;
         default:    // "T"
+            System.out.println(parts[0]);
             task = new ToDo(parts[2]);
             break;
         }
@@ -123,6 +131,11 @@ public class Eve {
         output(message.trim());
     }
 
+    public static void clearList() {
+        taskList.clear();
+        output("All the tasks in your list are cleared.");
+    }
+
     public static void mark(int num) throws InvalidTaskNumException {
         try {
             taskList.get(num - 1).markAsDone();
@@ -149,20 +162,26 @@ public class Eve {
         } else if (command.equals("deadline")) {
             try {
                 String desc = description.split("/by")[0].trim();
-                String by = description.split("/by")[1].trim();
+                LocalDateTime by = DateTime.parseString(description.split("/by")[1].trim());
                 taskList.add(new Deadline(desc, by));
+            } catch (DateTimeParseException ex) {
+                System.out.println("You should let me know the date and time using the format dd/mm/yyyy hh:mm\n");
+                return;
             } catch (Exception ex) {
-                throw new DeadlineTaskException("Let me know the deadline using keyword /by");
+                throw new DeadlineTaskException("Let me know the deadline using keyword /by\n");
             }
         } else {
             try {
                 String desc = description.split("/from")[0].trim();
-                String from = description.split("/from")[1].split("/to")[0].trim();
-                String to = description.split("/from")[1].split("/to")[1].trim();
+                LocalDateTime from = DateTime.parseString(description.split("/from")[1].split("/to")[0].trim());
+                LocalDateTime to = DateTime.parseString(description.split("/from")[1].split("/to")[1].trim());
                 taskList.add(new Event(desc, from, to));
+            } catch (DateTimeParseException ex) {
+                System.out.println("You should let me know the task deadline using the format dd/mm/yyyy hh:mm\n");
+                return;
             } catch (Exception ex) {
                 throw new EventTaskException("Let me know the time of the event using " +
-                        "keywords /from and /to");
+                        "keywords /from and /to\n");
             }
         }
         output("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
