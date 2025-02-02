@@ -1,5 +1,5 @@
 public class Task {
-    private String description;
+    protected String description;
     private boolean isDone;
 
     public Task(String description) {
@@ -18,6 +18,10 @@ public class Task {
     public void markAsNotDone() {
         isDone = false;
     };
+
+    public String toDataString() {
+        return description;
+    }
 
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
