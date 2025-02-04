@@ -1,5 +1,5 @@
-public class InvalidTaskNumException extends Exception {
-    public InvalidTaskNumException(String message) {
-        super(message);
+public class InvalidTaskNumException extends EveException {
+    public InvalidTaskNumException() {
+        super("The task number you specified does not exist...");
     }
 }
