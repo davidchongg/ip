@@ -1,5 +1,5 @@
-public class InvalidCommandException extends Exception {
-    public InvalidCommandException(String message) {
-        super(message);
+public class InvalidCommandException extends EveException {
+    public InvalidCommandException() {
+        super("Oh no... I have no idea what you just said. Please try again...");
     }
 }
