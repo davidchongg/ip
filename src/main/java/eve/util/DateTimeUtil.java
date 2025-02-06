@@ -6,7 +6,17 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 
+/**
+ * Utility class to handle date and time.
+ */
 public class DateTimeUtil {
+    /**
+     * Parses a string into a LocalDateTime object.
+     *
+     * @param dateTimeString String to be parsed.
+     * @return LocalDateTime object.
+     * @throws DateTimeParseException If the input string cannot be parsed.
+     */
     public static LocalDateTime parseString(String dateTimeString) throws DateTimeParseException {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE_TIME)   // "2007-12-03T10:15:30"

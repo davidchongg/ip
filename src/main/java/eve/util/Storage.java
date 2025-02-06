@@ -16,6 +16,9 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Utility class to handle storage of data to a data file.
+ */
 public class Storage {
     private final String DIRECTORY_PATH;
     private final String FILE_NAME;
@@ -25,6 +28,11 @@ public class Storage {
         this.FILE_NAME = FILE_NAME;
     }
 
+    /**
+     * Returns an ArrayList of Task that is loaded from the data file.
+     *
+     * @throws EveException Custom exceptions with custom error messages.
+     */
     public ArrayList<Task> load() throws EveException {
         ArrayList<Task> taskList = new ArrayList<>();
         try {
@@ -46,6 +54,13 @@ public class Storage {
         return taskList;
     }
 
+    /**
+     * Parses a string into a Task object.
+     *
+     * @param line String obtained from the data file.
+     * @return Task parsed from the string.
+     * @throws DateTimeParseException If a string from the data file cannot be parsed into LocalDateTime object.
+     */
     public Task parseStringIntoTask(String line) throws DateTimeParseException {
         String[] parts = line.split(" \\| ");
         for (int i = 0; i < parts.length; i++) {
@@ -69,6 +84,12 @@ public class Storage {
         return task;
     }
 
+    /**
+     * Writes the tasks in the taskList to the data file.
+     *
+     * @param taskList ArrayList containing all the tasks.
+     * @throws EveException Custom exceptions with custom error messages.
+     */
     public void writeToFile(ArrayList<Task> taskList) throws EveException {
         StringBuilder dataToWrite = new StringBuilder();
         for (Task task: taskList) {
