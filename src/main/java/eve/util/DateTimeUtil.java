@@ -1,10 +1,12 @@
+package eve.util;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 
-public class DateTime {
+public class DateTimeUtil {
     public static LocalDateTime parseString(String dateTimeString) throws DateTimeParseException {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE_TIME)   // "2007-12-03T10:15:30"

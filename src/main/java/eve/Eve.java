@@ -1,4 +1,13 @@
+package eve;
+
 import java.util.ArrayList;
+
+import eve.task.Task;
+import eve.ui.Ui;
+import eve.util.Storage;
+import eve.exception.EveException;
+import eve.command.Command;
+import eve.command.CommandParser;
 
 public class Eve {
     private ArrayList<Task> taskList;
