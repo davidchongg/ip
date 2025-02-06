@@ -1,3 +1,10 @@
+package eve.command;
+
+import eve.exception.EveException;
+import eve.exception.IncompleteCommandException;
+import eve.exception.InvalidCommandException;
+import eve.exception.NotIntException;
+
 public class CommandParser {
     public static Command parseString(String fullCommand) throws EveException {
         String[] tokens = fullCommand.split(" ", 2);

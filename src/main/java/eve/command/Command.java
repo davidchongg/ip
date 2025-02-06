@@ -1,3 +1,10 @@
+package eve.command;
+
+import eve.task.Task;
+import eve.ui.Ui;
+import eve.util.Storage;
+import eve.exception.EveException;
+
 import java.util.ArrayList;
 
 public interface Command {

@@ -1,3 +1,12 @@
+package eve.util;
+
+import eve.exception.DataFileWriteException;
+import eve.exception.EveException;
+import eve.task.Deadline;
+import eve.task.Event;
+import eve.task.Task;
+import eve.task.ToDo;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -45,10 +54,10 @@ public class Storage {
         Task task;
         switch (parts[0]) {
         case "D":
-            task = new Deadline(parts[2], DateTime.parseString(parts[3]));
+            task = new Deadline(parts[2], DateTimeUtil.parseString(parts[3]));
             break;
         case "E":
-            task = new Event(parts[2], DateTime.parseString(parts[3]), DateTime.parseString(parts[4]));
+            task = new Event(parts[2], DateTimeUtil.parseString(parts[3]), DateTimeUtil.parseString(parts[4]));
             break;
         default:    // "T"
             task = new ToDo(parts[2]);

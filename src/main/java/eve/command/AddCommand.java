@@ -1,3 +1,17 @@
+package eve.command;
+
+import eve.task.Task;
+import eve.ui.Ui;
+import eve.util.Storage;
+import eve.util.DateTimeUtil;
+import eve.exception.EveException;
+import eve.exception.InvalidDateTimeException;
+import eve.exception.InvalidDeadlineException;
+import eve.exception.InvalidEventException;
+import eve.task.ToDo;
+import eve.task.Deadline;
+import eve.task.Event;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -19,7 +33,7 @@ public class AddCommand implements Command {
         case "deadline":
             try {
                 String desc = description.split("/by")[0].trim();
-                LocalDateTime by = DateTime.parseString(description.split("/by")[1].trim());
+                LocalDateTime by = DateTimeUtil.parseString(description.split("/by")[1].trim());
                 taskList.add(new Deadline(desc, by));
                 break;
             } catch (DateTimeParseException ex) {
@@ -30,8 +44,8 @@ public class AddCommand implements Command {
         case "event":
             try {
                 String desc = description.split("/from")[0].trim();
-                LocalDateTime from = DateTime.parseString(description.split("/from")[1].split("/to")[0].trim());
-                LocalDateTime to = DateTime.parseString(description.split("/from")[1].split("/to")[1].trim());
+                LocalDateTime from = DateTimeUtil.parseString(description.split("/from")[1].split("/to")[0].trim());
+                LocalDateTime to = DateTimeUtil.parseString(description.split("/from")[1].split("/to")[1].trim());
                 taskList.add(new Event(desc, from, to));
                 break;
             } catch (DateTimeParseException ex) {
