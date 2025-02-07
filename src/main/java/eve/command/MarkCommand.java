@@ -18,7 +18,7 @@ public class MarkCommand implements Command {
     public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
         try {
             taskList.get(num - 1).markAsDone();
-            ui.output("Nice! I've marked this task as done:\n\t"
+            ui.displayMessage("Nice! I've marked this task as done:\n\t"
                     + taskList.get(num - 1).toString());
             storage.writeToFile(taskList);
         } catch (IndexOutOfBoundsException e) {

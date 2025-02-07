@@ -9,22 +9,22 @@ public class Ui {
         this.scanner = new Scanner(System.in);
     }
 
-    public void output(String message) {
+    public void displayMessage(String message) {
         String fullMessage = "-------------------------------------------------------------------------------------\n"
                 + message + "\n"
                 + "-------------------------------------------------------------------------------------\n";
         System.out.println(fullMessage);
     }
 
-    public void greet() {
-        output("Hello, I'm Eve!\nWhat can I do for you?");
+    public void showWelcomeMessage() {
+        displayMessage("Hello, I'm Eve!\nWhat can I do for you?");
     }
 
     public String nextCommand() {
         return scanner.nextLine();
     }
 
-    public void showError(String message) {
-        output(message);
+    public void displayError(String message) {
+        displayMessage(message);
     }
 }

@@ -16,7 +16,7 @@ public class ListCommand implements Command {
                     .append(task.toString()).append("\n");
             num++;
         }
-        ui.output(message.toString().trim());
+        ui.displayMessage(message.toString().trim());
     }
 
     public boolean isExit() {

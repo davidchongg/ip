@@ -54,7 +54,7 @@ public class AddCommand implements Command {
                 throw new InvalidEventException();
             }
         }
-        ui.output("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
+        ui.displayMessage("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
                 + "\nNow you have " + Integer.toString(taskList.size()) + " tasks in the list.");
 
         storage.writeToFile(taskList);

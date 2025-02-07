@@ -18,7 +18,7 @@ public class UnmarkCommand implements Command {
     public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
         try {
             taskList.get(num - 1).markAsNotDone();
-            ui.output("OK, I've marked this task as not done yet:\n\t"
+            ui.displayMessage("OK, I've marked this task as not done yet:\n\t"
                     + taskList.get(num - 1).toString());
             storage.writeToFile(taskList);
         } catch (IndexOutOfBoundsException e) {
