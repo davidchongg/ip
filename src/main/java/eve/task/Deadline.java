@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Represents a deadline task with a LocalDateTime due date.
  */
-public class Deadline extends Task{
+public class Deadline extends Task {
     private final LocalDateTime by;
 
     public Deadline(String description, LocalDateTime by) {

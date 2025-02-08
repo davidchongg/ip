@@ -17,7 +17,7 @@ public class Ui {
      *
      * @param message Message to be displayed on the user interface.
      */
-    public void output(String message) {
+    public void displayMessage(String message) {
         String fullMessage = "-------------------------------------------------------------------------------------\n"
                 + message + "\n"
                 + "-------------------------------------------------------------------------------------\n";
@@ -27,8 +27,8 @@ public class Ui {
     /**
      * Displays the welcome message on the user interface.
      */
-    public void greet() {
-        output("Hello, I'm Eve!\nWhat can I do for you?");
+    public void showWelcomeMessage() {
+        displayMessage("Hello, I'm Eve!\nWhat can I do for you?");
     }
 
     /**
@@ -45,7 +45,7 @@ public class Ui {
      *
      * @param message Error message to be displayed on the user interface.
      */
-    public void showError(String message) {
-        output(message);
+    public void displayError(String message) {
+        displayMessage(message);
     }
 }

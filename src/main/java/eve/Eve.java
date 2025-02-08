@@ -22,12 +22,12 @@ public class Eve {
      * Executes the main control loop of the program.
      */
     public void run() {
-        ui.greet();
+        ui.showWelcomeMessage();
         Storage storage = new Storage("data/", "eve.txt");
         try {
-            taskList = storage.load();
+            taskList = storage.loadTasks();
         } catch (EveException ex) {
-            ui.showError(ex.getMessage());
+            ui.displayError(ex.getMessage());
         }
         while (!isExit) {
             String fullCommand = ui.nextCommand();
@@ -36,7 +36,7 @@ public class Eve {
                 command.execute(taskList, ui, storage);
                 isExit = command.isExit();
             } catch (EveException ex) {
-                ui.showError(ex.getMessage());
+                ui.displayError(ex.getMessage());
             }
         }
     }
