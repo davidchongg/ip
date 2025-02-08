@@ -1,12 +1,10 @@
 package eve.command;
 
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
+import eve.util.TaskList;
 import eve.exception.EveException;
 import eve.exception.InvalidTaskNumException;
-
-import java.util.ArrayList;
 
 public class UnmarkCommand implements Command {
     private final int num;
@@ -15,7 +13,7 @@ public class UnmarkCommand implements Command {
         this.num = Integer.parseInt(description);
     }
 
-    public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
         try {
             taskList.get(num - 1).markAsNotDone();
             ui.output("OK, I've marked this task as not done yet:\n\t"

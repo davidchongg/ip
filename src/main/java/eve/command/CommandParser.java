@@ -24,6 +24,7 @@ public class CommandParser {
         case "deadline":
         case "event":
         case "delete":
+        case "find":
             try {
                 String description = tokens[1];
                 switch (command) {
@@ -35,20 +36,22 @@ public class CommandParser {
                     }
                 case "unmark":
                     try {
-                        return new UnmarkCommand(tokens[1]);
+                        return new UnmarkCommand(description);
                     } catch (NumberFormatException e) {
                         throw new NotIntException();
                     }
                 case "todo":
                 case "deadline":
                 case "event":
-                    return new AddCommand(command, tokens[1]);
+                    return new AddCommand(command, description);
                 case "delete":
                     try {
-                        return new DeleteCommand(tokens[1]);
+                        return new DeleteCommand(description);
                     } catch (NumberFormatException e) {
                         throw new NotIntException();
                     }
+                case "find":
+                    return new FindCommand(description);
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new IncompleteCommandException();

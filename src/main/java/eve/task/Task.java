@@ -21,6 +21,10 @@ public class Task {
         isDone = false;
     };
 
+    public boolean containString(String inputString) {
+        return description.contains(inputString);
+    }
+
     public String toDataString() {
         return description;
     }

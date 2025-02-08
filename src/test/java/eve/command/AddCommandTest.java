@@ -2,11 +2,10 @@ package eve.command;
 
 import eve.exception.InvalidDateTimeException;
 import eve.exception.InvalidEventException;
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
+import eve.util.TaskList;
 
-import java.util.ArrayList;
 import eve.exception.InvalidDeadlineException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,7 +16,7 @@ public class AddCommandTest {
         assertThrows(
                 InvalidDeadlineException.class,
                 () -> new AddCommand("deadline", "study").execute(
-                        new ArrayList<Task>(), new Ui(), new Storage("", ""))
+                        new TaskList(), new Ui(), new Storage("", ""))
         );
     }
 
@@ -26,7 +25,7 @@ public class AddCommandTest {
         assertThrows(
                 InvalidDateTimeException.class,
                 () -> new AddCommand("deadline", "study /by tonight").execute(
-                        new ArrayList<Task>(), new Ui(), new Storage("", ""))
+                        new TaskList(), new Ui(), new Storage("", ""))
         );
     }
 
@@ -35,7 +34,7 @@ public class AddCommandTest {
         assertThrows(
                 InvalidEventException.class,
                 () -> new AddCommand("event", "study /from 23/01/2025").execute(
-                        new ArrayList<Task>(), new Ui(), new Storage("", ""))
+                        new TaskList(), new Ui(), new Storage("", ""))
         );
     }
 }

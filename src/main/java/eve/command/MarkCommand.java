@@ -1,12 +1,10 @@
 package eve.command;
 
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
+import eve.util.TaskList;
 import eve.exception.EveException;
 import eve.exception.InvalidTaskNumException;
-
-import java.util.ArrayList;
 
 public class MarkCommand implements Command {
     private final int num;
@@ -15,7 +13,7 @@ public class MarkCommand implements Command {
         this.num = Integer.parseInt(description);
     }
 
-    public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
         try {
             taskList.get(num - 1).markAsDone();
             ui.output("Nice! I've marked this task as done:\n\t"
