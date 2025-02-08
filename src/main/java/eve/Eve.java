@@ -18,6 +18,9 @@ public class Eve {
         ui = new Ui();
     }
 
+    /**
+     * Executes the main control loop of the program.
+     */
     public void run() {
         ui.greet();
         Storage storage = new Storage("data/", "eve.txt");

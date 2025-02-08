@@ -16,6 +16,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+/**
+ * Represents a command for adding tasks to the taskList.
+ */
 public class AddCommand implements Command {
     private final String command;
     private final String description;
@@ -25,6 +28,14 @@ public class AddCommand implements Command {
         this.description = description;
     }
 
+    /**
+     * Adds the type of task to taskList based on the command and description strings.
+     *
+     * @param taskList ArrayList containing all the tasks.
+     * @param ui User interface for users.
+     * @param storage Utils for storing information to data file.
+     * @throws EveException Custom exceptions with custom error messages.
+     */
     public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
         switch (command) {
         case "todo":

@@ -3,6 +3,9 @@ package eve.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a deadline task with a LocalDateTime due date.
+ */
 public class Deadline extends Task{
     private final LocalDateTime by;
 

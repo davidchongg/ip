@@ -8,6 +8,9 @@ import eve.exception.InvalidTaskNumException;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a command for deleting a task from the taskList.
+ */
 public class DeleteCommand implements Command {
     private final int num;
 
@@ -15,6 +18,14 @@ public class DeleteCommand implements Command {
         this.num = Integer.parseInt(description);
     }
 
+    /**
+     * Deletes the task at index num - 1 from the taskList.
+     *
+     * @param taskList ArrayList containing all the tasks.
+     * @param ui User interface for users.
+     * @param storage Utils for storing information to data file.
+     * @throws EveException Custom exceptions with custom error messages.
+     */
     public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
         try {
             Task task = taskList.remove(num - 1);

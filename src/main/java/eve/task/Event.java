@@ -3,6 +3,9 @@ package eve.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents an event with a LocalDateTime start and end time.
+ */
 public class Event extends Task {
     LocalDateTime from;
     LocalDateTime to;
