@@ -1,10 +1,8 @@
 package eve.command;
 
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
-
-import java.util.ArrayList;
+import eve.util.TaskList;
 
 /**
  * Represents a command to list all the tasks in the taskList.
@@ -17,16 +15,9 @@ public class ListCommand implements Command {
      * @param ui User interface for users.
      * @param storage Utils for storing information to data file.
      */
-    public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) {
-        StringBuilder message = new StringBuilder();
-        message.append("Here are the tasks in your list:\n");
-        int num = 1;
-        for (Task task: taskList) {
-            message.append("\t").append(Integer.toString(num)).append(".")
-                    .append(task.toString()).append("\n");
-            num++;
-        }
-        ui.displayMessage(message.toString().trim());
+    public void execute(TaskList taskList, Ui ui, Storage storage) {
+        String message = "Here are the tasks in your list:\n";
+        ui.displayMessage(message + taskList.toString());
     }
 
     public boolean isExit() {

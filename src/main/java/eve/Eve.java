@@ -1,16 +1,14 @@
 package eve;
 
-import java.util.ArrayList;
-
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
+import eve.util.TaskList;
 import eve.exception.EveException;
 import eve.command.Command;
 import eve.command.CommandParser;
 
 public class Eve {
-    private ArrayList<Task> taskList;
+    private TaskList taskList;
     private boolean isExit = false;
     private final Ui ui;
 

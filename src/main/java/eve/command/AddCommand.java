@@ -1,9 +1,9 @@
 package eve.command;
 
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.DateTimeUtil;
+import eve.util.TaskList;
 import eve.exception.EveException;
 import eve.exception.InvalidDateTimeException;
 import eve.exception.InvalidDeadlineException;
@@ -14,7 +14,6 @@ import eve.task.Event;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 
 /**
  * Represents a command for adding tasks to the taskList.
@@ -36,7 +35,7 @@ public class AddCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
         switch (command) {
         case "todo":
             taskList.add(new ToDo(description));

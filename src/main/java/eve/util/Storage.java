@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -33,8 +32,8 @@ public class Storage {
      *
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public ArrayList<Task> loadTasks() throws EveException {
-        ArrayList<Task> taskList = new ArrayList<>();
+    public TaskList load() throws EveException {
+        TaskList taskList = new TaskList();
         try {
             File file = new File(DIRECTORY_PATH + FILE_NAME);
             Scanner s = new Scanner(file);
@@ -91,7 +90,7 @@ public class Storage {
      * @param taskList ArrayList containing all the tasks.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void writeToFile(ArrayList<Task> taskList) throws EveException {
+    public void writeToFile(TaskList taskList) throws EveException {
         StringBuilder dataToWrite = new StringBuilder();
         for (Task task: taskList) {
             dataToWrite.append(task.toDataString()).append("\n");

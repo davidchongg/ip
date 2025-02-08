@@ -1,8 +1,8 @@
 package eve.command;
 
-import eve.task.Task;
 import eve.ui.Ui;
 import eve.util.Storage;
+import eve.util.TaskList;
 import eve.exception.EveException;
 import eve.exception.InvalidTaskNumException;
 
@@ -26,7 +26,7 @@ public class MarkCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(ArrayList<Task> taskList, Ui ui, Storage storage) throws EveException {
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
         try {
             taskList.get(num - 1).markAsDone();
             ui.displayMessage("Nice! I've marked this task as done:\n\t"

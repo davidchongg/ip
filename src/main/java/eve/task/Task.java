@@ -33,6 +33,10 @@ public class Task {
         isDone = false;
     };
 
+    public boolean containString(String inputString) {
+        return description.contains(inputString);
+    }
+
     /**
      * Returns a string representing this task to be stored in the data file.
      */
