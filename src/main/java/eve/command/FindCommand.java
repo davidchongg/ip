@@ -12,7 +12,7 @@ public class FindCommand implements Command {
     }
 
     public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.output(taskList.getMatchingTasks(this.description));
+        ui.displayMessage(taskList.getMatchingTasks(this.description));
     }
 
     public boolean isExit() {

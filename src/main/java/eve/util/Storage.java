@@ -32,7 +32,7 @@ public class Storage {
      *
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public TaskList load() throws EveException {
+    public TaskList loadTasks() throws EveException {
         TaskList taskList = new TaskList();
         try {
             File file = new File(DIRECTORY_PATH + FILE_NAME);

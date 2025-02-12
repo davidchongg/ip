@@ -33,6 +33,12 @@ public class Task {
         isDone = false;
     };
 
+    /**
+     * Returns whether the input string is contained in this task's description.
+     *
+     * @param inputString String to check
+     * @return True if string is contained in this task's description.
+     */
     public boolean containString(String inputString) {
         return description.contains(inputString);
     }
@@ -46,7 +52,6 @@ public class Task {
 
     /**
      * Returns a string describing this task to be displayed on the user interface.
-     * @return
      */
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;

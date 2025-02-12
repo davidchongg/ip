@@ -5,6 +5,9 @@ import eve.task.Task;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Utility class to represent a list of tasks.
+ */
 public class TaskList implements Iterable<Task> {
     private ArrayList<Task> tasks;
 
