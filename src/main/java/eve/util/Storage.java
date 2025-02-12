@@ -1,12 +1,5 @@
 package eve.util;
 
-import eve.exception.DataFileWriteException;
-import eve.exception.EveException;
-import eve.task.Deadline;
-import eve.task.Event;
-import eve.task.Task;
-import eve.task.ToDo;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,16 +8,26 @@ import java.nio.file.Paths;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+import eve.exception.DataFileWriteException;
+import eve.exception.EveException;
+import eve.task.Deadline;
+import eve.task.Event;
+import eve.task.Task;
+import eve.task.ToDo;
+
 /**
  * Utility class to handle storage of data to a data file.
  */
 public class Storage {
-    private final String DIRECTORY_PATH;
-    private final String FILE_NAME;
+    private final String directoryPath;
+    private final String fileName;
 
-    public Storage(String DIRECTORY_PATH, String FILE_NAME) {
-        this.DIRECTORY_PATH = DIRECTORY_PATH;
-        this.FILE_NAME = FILE_NAME;
+    /**
+     * Initialize storage utility class to handle storage of data.
+     */
+    public Storage(String directoryPath, String fileName) {
+        this.directoryPath = directoryPath;
+        this.fileName = fileName;
     }
 
     /**
@@ -35,7 +38,7 @@ public class Storage {
     public TaskList loadTasks() throws EveException {
         TaskList taskList = new TaskList();
         try {
-            File file = new File(DIRECTORY_PATH + FILE_NAME);
+            File file = new File(directoryPath + fileName);
             Scanner s = new Scanner(file);
             while (s.hasNextLine()) {
                 String line = s.nextLine();
@@ -44,8 +47,8 @@ public class Storage {
         } catch (FileNotFoundException e) {
             // Running for first time
             try {
-                Files.createDirectories(Paths.get(this.DIRECTORY_PATH));
-                Files.createFile(Paths.get(DIRECTORY_PATH + FILE_NAME));
+                Files.createDirectories(Paths.get(this.directoryPath));
+                Files.createFile(Paths.get(directoryPath + fileName));
             } catch (IOException e1) {
                 throw new DataFileWriteException();
             }
@@ -96,7 +99,7 @@ public class Storage {
             dataToWrite.append(task.toDataString()).append("\n");
         }
         try {
-            Files.writeString(Paths.get(DIRECTORY_PATH + FILE_NAME), dataToWrite.toString());
+            Files.writeString(Paths.get(directoryPath + fileName), dataToWrite.toString());
         } catch (IOException ex) {
             throw new DataFileWriteException();
         }

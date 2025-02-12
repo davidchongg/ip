@@ -1,5 +1,8 @@
 package eve.task;
 
+/**
+ * Represents a todo task.
+ */
 public class ToDo extends Task {
     public ToDo(String description) {
         super(description);
@@ -10,6 +13,7 @@ public class ToDo extends Task {
         return "T | " + super.getStatusIcon() + " | " + this.description;
     }
 
+    @Override
     public String toString() {
         return "[T]" + super.toString();
     }

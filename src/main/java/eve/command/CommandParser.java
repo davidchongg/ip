@@ -26,8 +26,6 @@ public class CommandParser {
             return new ListCommand();
         case "clear":
             return new ClearCommand();
-        }
-        switch (command) {
         case "mark":
         case "unmark":
         case "todo":
@@ -62,6 +60,8 @@ public class CommandParser {
                     }
                 case "find":
                     return new FindCommand(description);
+                default:
+                    throw new InvalidCommandException();
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new IncompleteCommandException();

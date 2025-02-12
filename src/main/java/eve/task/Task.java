@@ -7,6 +7,9 @@ public class Task {
     protected String description;
     private boolean isDone;
 
+    /**
+     * Initialize a task with its description.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
@@ -53,6 +56,7 @@ public class Task {
     /**
      * Returns a string describing this task to be displayed on the user interface.
      */
+    @Override
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
     }

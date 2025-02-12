@@ -1,12 +1,15 @@
 package eve;
 
+import eve.command.Command;
+import eve.command.CommandParser;
+import eve.exception.EveException;
 import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
-import eve.exception.EveException;
-import eve.command.Command;
-import eve.command.CommandParser;
 
+/**
+ * Main class for Eve chatbot
+ */
 public class Eve {
     private TaskList taskList;
     private boolean isExit = false;
