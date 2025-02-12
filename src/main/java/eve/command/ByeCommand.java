@@ -17,7 +17,7 @@ public class ByeCommand implements Command {
      * @param storage Utils for storing information to data file.
      */
     public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.displayMessage( "Bye. Hope to see you again soon!");
+        ui.displayMessage("Bye. Hope to see you again soon!");
     }
 
     public boolean isExit() {

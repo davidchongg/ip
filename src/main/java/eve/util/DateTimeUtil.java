@@ -19,8 +19,8 @@ public class DateTimeUtil {
      */
     public static LocalDateTime parseString(String dateTimeString) throws DateTimeParseException {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE_TIME)   // "2007-12-03T10:15:30"
-                .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE)        // "2007-12-03"
+                .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE_TIME) // "2007-12-03T10:15:30"
+                .appendOptional(DateTimeFormatter.ISO_LOCAL_DATE) // "2007-12-03"
                 .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")) // "2007/12/03 10:15:30"
                 .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")) // "2007/12/03 10:15"
                 .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm")) // "2007/12/03 1015"

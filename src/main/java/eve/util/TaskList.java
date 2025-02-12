@@ -1,9 +1,9 @@
 package eve.util;
 
-import eve.task.Task;
-
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import eve.task.Task;
 
 /**
  * Utility class to represent a list of tasks.
@@ -48,6 +48,7 @@ public class TaskList implements Iterable<Task> {
         return message.toString().replaceFirst("\n$", "");
     }
 
+    @Override
     public String toString() {
         StringBuilder message = new StringBuilder();
         int num = 1;

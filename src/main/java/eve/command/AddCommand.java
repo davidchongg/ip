@@ -1,19 +1,21 @@
 package eve.command;
 
-import eve.ui.Ui;
-import eve.util.Storage;
-import eve.util.DateTimeUtil;
-import eve.util.TaskList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+
 import eve.exception.EveException;
+import eve.exception.InvalidCommandException;
 import eve.exception.InvalidDateTimeException;
 import eve.exception.InvalidDeadlineException;
 import eve.exception.InvalidEventException;
-import eve.task.ToDo;
 import eve.task.Deadline;
 import eve.task.Event;
+import eve.task.ToDo;
+import eve.ui.Ui;
+import eve.util.DateTimeUtil;
+import eve.util.Storage;
+import eve.util.TaskList;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 
 /**
  * Represents a command for adding tasks to the taskList.
@@ -22,6 +24,9 @@ public class AddCommand implements Command {
     private final String command;
     private final String description;
 
+    /**
+     * Initialize add command with its command and description.
+     */
     public AddCommand(String command, String description) {
         this.command = command;
         this.description = description;
@@ -63,7 +68,10 @@ public class AddCommand implements Command {
             } catch (Exception ex) {
                 throw new InvalidEventException();
             }
+        default:
+            throw new InvalidCommandException();
         }
+
         ui.displayMessage("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
                 + "\nNow you have " + Integer.toString(taskList.size()) + " tasks in the list.");
 
