@@ -26,6 +26,8 @@ public class CommandParser {
             return new ListCommand();
         case "clear":
             return new ClearCommand();
+        case "close":
+            return new CloseWindowCommand();
         case "mark":
         case "unmark":
         case "todo":

@@ -40,7 +40,8 @@ public class AddCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+        StringBuilder response = new StringBuilder();
         switch (command) {
         case "todo":
             taskList.add(new ToDo(description));
@@ -71,14 +72,17 @@ public class AddCommand implements Command {
         default:
             throw new InvalidCommandException();
         }
-
-        ui.displayMessage("Got it. I've added this task:\n\t" + taskList.get(taskList.size() - 1).toString()
-                + "\nNow you have " + Integer.toString(taskList.size()) + " tasks in the list.");
-
         storage.writeToFile(taskList);
+        response.append("Got it. I've added this task:\n\t").append(taskList.get(taskList.size() - 1).toString())
+                .append("\nNow you have ").append(Integer.toString(taskList.size())).append(" tasks in the list.");
+        return response.toString();
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }

@@ -18,13 +18,17 @@ public class ClearCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
         taskList.clear();
-        ui.displayMessage("All the tasks in your list are cleared.");
         storage.writeToFile(taskList);
+        return "All the tasks in your list are cleared.";
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }

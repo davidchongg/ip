@@ -24,18 +24,24 @@ public class UnmarkCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+        StringBuilder response = new StringBuilder();
         try {
             taskList.get(num - 1).markAsNotDone();
-            ui.displayMessage("OK, I've marked this task as not done yet:\n\t"
-                    + taskList.get(num - 1).toString());
+            response.append("OK, I've marked this task as not done yet:\n\t")
+                    .append(taskList.get(num - 1).toString());
             storage.writeToFile(taskList);
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidTaskNumException();
         }
+        return response.toString();
     }
 
     public boolean isExit() {
+        return false;
+    }
+    
+    public boolean isCloseWindow() {
         return false;
     }
 }

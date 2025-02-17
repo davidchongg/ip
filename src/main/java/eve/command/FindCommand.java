@@ -14,11 +14,15 @@ public class FindCommand implements Command {
         this.description = description;
     }
 
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.displayMessage(taskList.getMatchingTasks(this.description));
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return taskList.getMatchingTasks(this.description);
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }
