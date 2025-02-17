@@ -15,12 +15,16 @@ public class ListCommand implements Command {
      * @param ui User interface for users.
      * @param storage Utils for storing information to data file.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         String message = "Here are the tasks in your list:\n";
-        ui.displayMessage(message + taskList.toString());
+        return message + taskList.toString();
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }

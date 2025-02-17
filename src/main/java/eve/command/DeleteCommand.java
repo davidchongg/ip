@@ -25,20 +25,24 @@ public class DeleteCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+        StringBuilder response = new StringBuilder();
         try {
             Task task = taskList.remove(num - 1);
-            ui.displayMessage("Noted. I've removed this task:\n\t" + task
-                    + "\nNow you have " + Integer.toString(taskList.size())
-                    + " tasks in the list.");
             storage.writeToFile(taskList);
+            response.append("Noted. I've removed this task:\n\t").append(task).append("\nNow you have ")
+                    .append(Integer.toString(taskList.size())).append(" tasks in the list.");
         } catch (IndexOutOfBoundsException ex) {
             throw new InvalidTaskNumException();
         }
-
+        return response.toString();
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }

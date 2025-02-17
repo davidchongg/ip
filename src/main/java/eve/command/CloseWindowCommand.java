@@ -4,20 +4,19 @@ import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
 
-
 /**
  * Represent a command to exit the program.
  */
-public class ByeCommand implements Command {
+public class CloseWindowCommand implements Command {
     /**
-     * Displays the goodbye message to the ui.
+     * Does nothing as window will be close.
      *
      * @param taskList ArrayList containing all the tasks.
      * @param ui User interface for users.
      * @param storage Utils for storing information to data file.
      */
     public String execute(TaskList taskList, Ui ui, Storage storage) {
-        return "Bye. Hope to see you again soon!\nType \"close\" to close the program window.";
+        return "";
     }
 
     public boolean isExit() {
@@ -25,6 +24,6 @@ public class ByeCommand implements Command {
     }
 
     public boolean isCloseWindow() {
-        return false;
+        return true;
     }
 }

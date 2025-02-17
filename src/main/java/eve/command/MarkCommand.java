@@ -24,18 +24,24 @@ public class MarkCommand implements Command {
      * @param storage Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+        StringBuilder response = new StringBuilder();
         try {
             taskList.get(num - 1).markAsDone();
-            ui.displayMessage("Nice! I've marked this task as done:\n\t"
-                    + taskList.get(num - 1).toString());
             storage.writeToFile(taskList);
+            response.append("Nice! I've marked this task as done:\n\t")
+                    .append(taskList.get(num - 1).toString());
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidTaskNumException();
         }
+        return response.toString();
     }
 
     public boolean isExit() {
+        return false;
+    }
+
+    public boolean isCloseWindow() {
         return false;
     }
 }

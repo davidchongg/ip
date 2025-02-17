@@ -9,13 +9,16 @@ import eve.util.TaskList;
  * Represents a command to be executed.
  */
 public interface Command {
-    public void execute(TaskList taskList, Ui ui, Storage storage)
+    public String execute(TaskList taskList, Ui ui, Storage storage)
             throws EveException;
 
     /**
      * Returns whether it is a command to exit the program.
-     *
-     * @return If command to exit the program.
      */
     public boolean isExit();
+
+    /**
+     * Returns whether it is a command to close the program window.
+     */
+    public boolean isCloseWindow();
 }

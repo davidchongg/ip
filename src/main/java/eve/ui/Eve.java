@@ -1,0 +1,74 @@
+package eve.ui;
+
+import eve.command.Command;
+import eve.command.CommandParser;
+import eve.exception.EveException;
+import eve.util.Storage;
+import eve.util.TaskList;
+
+/**
+ * Main class for Eve chatbot
+ * To Do
+ * - fix exit (bye)
+ * - fix window size increase user input area go down
+ * - fix margin of text response
+ */
+public class Eve {
+    private TaskList taskList;
+    private boolean isExit = false;
+    private boolean isCloseWindow = false;
+    private final Ui ui;
+    private final Storage storage;
+
+    /**
+     * Creates an instance of Eve with ui and storage.
+     */
+    public Eve() {
+        this.ui = new Ui();
+        this.storage = new Storage("data/", "eve.txt");
+        try {
+            taskList = storage.loadTasks();
+        } catch (EveException ex) {
+            ui.displayError(ex.getMessage());
+        }
+    }
+
+    /**
+     * Generates a response for the user's input message.
+     *
+     * @param input User's input message.
+     */
+    public String getResponse(String input) {
+        String output;
+        try {
+            Command command = CommandParser.parseString(input);
+            output = command.execute(taskList, ui, storage);
+            isExit = command.isExit();
+            isCloseWindow = command.isCloseWindow();
+        } catch (EveException ex) {
+            output = ex.getMessage();
+        }
+        return output;
+    }
+
+    /**
+     * Returns the welcome message to be displayed on the GUI at the start of the program.
+     */
+    public String getWelcomeMessage() {
+        return "Hello! I'm Eve, your personal chat bot. What can I do for you today?";
+    }
+
+    /**
+     * Returns whether program has been ended by user.
+     */
+    public boolean isExit() {
+        return isExit;
+    }
+
+    /**
+     * Returns whether program window has been closed by user.
+     */
+    public boolean isCloseWindow() {
+        return isCloseWindow;
+    }
+}
