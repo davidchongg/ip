@@ -3,7 +3,6 @@ package eve.command;
 import eve.exception.EveException;
 import eve.exception.InvalidTaskNumException;
 import eve.task.Task;
-import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
 
@@ -21,11 +20,10 @@ public class DeleteCommand implements Command {
      * Deletes the task at index num - 1 from the taskList.
      *
      * @param taskList ArrayList containing all the tasks.
-     * @param ui User interface for users.
-     * @param storage Utils for storing information to data file.
+     * @param storage  Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Storage storage) throws EveException {
         StringBuilder response = new StringBuilder();
         try {
             Task task = taskList.remove(num - 1);
