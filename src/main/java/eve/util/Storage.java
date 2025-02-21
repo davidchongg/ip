@@ -76,8 +76,7 @@ public class Storage {
         case "E":
             task = new Event(parts[2], DateTimeUtil.parseString(parts[3]), DateTimeUtil.parseString(parts[4]));
             break;
-        // "T"
-        default:
+        default: // "T"
             task = new ToDo(parts[2]);
             break;
         }

@@ -27,11 +27,11 @@ dependencies {
 }
 
 application {
-    mainClass.set("eve/Launcher")
+    mainClass.set("eve.Launcher")
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "eve"
     archiveClassifier = null
 }
 

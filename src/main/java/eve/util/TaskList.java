@@ -11,30 +11,54 @@ import eve.task.Task;
 public class TaskList implements Iterable<Task> {
     private ArrayList<Task> tasks;
 
+    /**
+     * Initializes an empty task list.
+     */
     public TaskList() {
         this.tasks = new ArrayList<Task>();
     }
 
+    /**
+     * Adds the task specified to the task list.
+     */
     public void add(Task task) {
         tasks.add(task);
     }
 
+    /**
+     * Returns the number of tasks in the task list.
+     */
     public int size() {
         return tasks.size();
     }
 
+    /**
+     * Returns the task at index specified.
+     */
     public Task get(int index) {
+        assert index >= 0 : "Index should not be negative";
         return tasks.get(index);
     }
 
+    /**
+     * Clears all task in the task list.
+     */
     public void clear() {
         tasks.clear();
     }
 
+    /**
+     * Removes task at index specified.
+     * @return Task removed.
+     */
     public Task remove(int index) {
+        assert index >= 0 : "Index should not be negative";
         return tasks.remove(index);
     }
 
+    /**
+     * Returns a string of all tasks containing the specified description string.
+     */
     public String getMatchingTasks(String description) {
         StringBuilder message = new StringBuilder();
         int num = 1;

@@ -2,6 +2,7 @@ package eve;
 
 import java.io.IOException;
 
+import eve.exception.EveException;
 import eve.ui.Eve;
 import eve.ui.MainWindow;
 import javafx.application.Application;
@@ -14,7 +15,7 @@ import javafx.stage.Stage;
  * A GUI for Duke using FXML.
  */
 public class Main extends Application {
-    private Eve eve = new Eve();
+    private Eve eve;
 
     @Override
     public void start(Stage stage) {
@@ -23,9 +24,12 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            eve = new Eve();
             fxmlLoader.<MainWindow>getController().setEve(eve); // inject the Eve instance
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (EveException e) {
             e.printStackTrace();
         }
     }
