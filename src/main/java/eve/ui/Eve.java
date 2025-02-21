@@ -45,7 +45,8 @@ public class Eve {
      * Returns the welcome message to be displayed on the GUI at the start of the program.
      */
     public String getWelcomeMessage() {
-        return "Hello! I'm Eve, your personal chat bot. What can I do for you today?";
+        return "Hello! I'm Eve, your personal chat bot. What can I do for you today?\n"
+                + "Use command \"help\" to view all available commands.";
     }
 
     /**

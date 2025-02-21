@@ -12,7 +12,7 @@ import java.time.temporal.ChronoField;
 public class DateTimeUtil {
     /**
      * Parses a string into a LocalDateTime object.
-     * Supports multiple date time format.
+     * Supports multiple format for date and time.
      *
      * @param dateTimeString String to be parsed.
      * @return LocalDateTime object.

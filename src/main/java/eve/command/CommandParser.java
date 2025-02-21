@@ -20,6 +20,8 @@ public class CommandParser {
         String[] tokens = fullCommand.split(" ", 2);
         String command = tokens[0];
         switch (command) {
+        case "help":
+            return new HelpCommand();
         case "bye":
             return new ByeCommand();
         case "list":
