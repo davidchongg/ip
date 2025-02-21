@@ -1,6 +1,5 @@
 package eve.command;
 
-import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
 
@@ -12,10 +11,9 @@ public class HelpCommand implements Command {
      * Displays all the available commands to the user.
      *
      * @param taskList ArrayList containing all the tasks.
-     * @param ui User interface for users.
      * @param storage Utils for storing information to data file.
      */
-    public String execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) {
         StringBuilder message = new StringBuilder();
         message.append("Looks like you need help! Here are all my available commands:\n")
                 .append("\t1. todo <description>: Adds a todo task to the list.\n")
