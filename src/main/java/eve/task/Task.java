@@ -1,5 +1,7 @@
 package eve.task;
 
+import java.time.LocalDateTime;
+
 /**
  * Represents a generic task added by users.
  */
@@ -44,6 +46,13 @@ public class Task {
      */
     public boolean containString(String inputString) {
         return description.contains(inputString);
+    }
+
+    /**
+     * Returns date and time to be compared for comparator.
+     */
+    public LocalDateTime getDateTime() {
+        return LocalDateTime.now();
     }
 
     /**

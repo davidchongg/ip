@@ -1,15 +1,18 @@
 package eve.util;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import eve.task.Task;
+import eve.task.TaskComparator;
 
 /**
  * Utility class to represent a list of tasks.
  */
 public class TaskList implements Iterable<Task> {
     private ArrayList<Task> tasks;
+    private final Comparator<Task> comparator = new TaskComparator();
 
     /**
      * Initializes an empty task list.
@@ -54,6 +57,13 @@ public class TaskList implements Iterable<Task> {
     public Task remove(int index) {
         assert index >= 0 : "Index should not be negative";
         return tasks.remove(index);
+    }
+
+    /**
+     * Sorts the task in the task list.
+     */
+    public void sort() {
+        this.tasks.sort(comparator);
     }
 
     /**
