@@ -20,6 +20,10 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    public LocalDateTime getDateTime() {
+        return by;
+    }
+
     @Override
     public String toDataString() {
         return "D | " + super.getStatusIcon() + " | " + this.description

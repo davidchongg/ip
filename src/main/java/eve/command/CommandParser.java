@@ -26,6 +26,8 @@ public class CommandParser {
             return new ByeCommand();
         case "list":
             return new ListCommand();
+        case "sort":
+            return new SortCommand();
         case "clear":
             return new ClearCommand();
         case "close":

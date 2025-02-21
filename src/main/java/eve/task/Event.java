@@ -23,6 +23,10 @@ public class Event extends Task {
         this.to = to;
     }
 
+    public LocalDateTime getDateTime() {
+        return from;
+    }
+
     @Override
     public String toDataString() {
         return "E | " + super.getStatusIcon() + " | " + this.description + " | " + this.from + " | " + this.to;
@@ -30,9 +34,9 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: "
+        return "[E]" + super.toString() + " (from "
                 + this.from.format(DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm"))
-                + "\tto: " + this.to.format(DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm")) + ")";
+                + " to " + this.to.format(DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm")) + ")";
     }
 
 }
