@@ -1,7 +1,6 @@
 package eve.command;
 
 import eve.exception.EveException;
-import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
 
@@ -9,7 +8,7 @@ import eve.util.TaskList;
  * Represents a command to be executed.
  */
 public interface Command {
-    public String execute(TaskList taskList, Ui ui, Storage storage)
+    public String execute(TaskList taskList, Storage storage)
             throws EveException;
 
     /**

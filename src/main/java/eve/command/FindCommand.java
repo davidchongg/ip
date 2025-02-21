@@ -1,6 +1,5 @@
 package eve.command;
 
-import eve.ui.Ui;
 import eve.util.Storage;
 import eve.util.TaskList;
 
@@ -14,7 +13,7 @@ public class FindCommand implements Command {
         this.description = description;
     }
 
-    public String execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) {
         return taskList.getMatchingTasks(this.description);
     }
 

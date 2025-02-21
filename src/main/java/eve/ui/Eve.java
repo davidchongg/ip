@@ -7,30 +7,20 @@ import eve.util.Storage;
 import eve.util.TaskList;
 
 /**
- * Main class for Eve chatbot
- * To Do
- * - fix exit (bye)
- * - fix window size increase user input area go down
- * - fix margin of text response
+ * Main class for Eve chatbot.
  */
 public class Eve {
     private TaskList taskList;
     private boolean isExit = false;
     private boolean isCloseWindow = false;
-    private final Ui ui;
     private final Storage storage;
 
     /**
      * Creates an instance of Eve with ui and storage.
      */
-    public Eve() {
-        this.ui = new Ui();
+    public Eve() throws EveException {
         this.storage = new Storage("data/", "eve.txt");
-        try {
-            taskList = storage.loadTasks();
-        } catch (EveException ex) {
-            ui.displayError(ex.getMessage());
-        }
+        taskList = storage.loadTasks();
     }
 
     /**
@@ -42,7 +32,7 @@ public class Eve {
         String output;
         try {
             Command command = CommandParser.parseString(input);
-            output = command.execute(taskList, ui, storage);
+            output = command.execute(taskList, storage);
             isExit = command.isExit();
             isCloseWindow = command.isCloseWindow();
         } catch (EveException ex) {

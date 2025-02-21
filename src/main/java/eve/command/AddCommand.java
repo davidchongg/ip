@@ -11,7 +11,6 @@ import eve.exception.InvalidEventException;
 import eve.task.Deadline;
 import eve.task.Event;
 import eve.task.ToDo;
-import eve.ui.Ui;
 import eve.util.DateTimeUtil;
 import eve.util.Storage;
 import eve.util.TaskList;
@@ -36,11 +35,10 @@ public class AddCommand implements Command {
      * Adds the type of task to taskList based on the command and description strings.
      *
      * @param taskList ArrayList containing all the tasks.
-     * @param ui User interface for users.
-     * @param storage Utils for storing information to data file.
+     * @param storage  Utils for storing information to data file.
      * @throws EveException Custom exceptions with custom error messages.
      */
-    public String execute(TaskList taskList, Ui ui, Storage storage) throws EveException {
+    public String execute(TaskList taskList, Storage storage) throws EveException {
         StringBuilder response = new StringBuilder();
         switch (command) {
         case "todo":
