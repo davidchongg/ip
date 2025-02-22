@@ -71,15 +71,22 @@ public class TaskList implements Iterable<Task> {
      */
     public String getMatchingTasks(String description) {
         StringBuilder message = new StringBuilder();
+        message.append("I found these matching tasks:\n");
+        boolean found = false;
         int num = 1;
         for (Task task: tasks) {
             if (task.containString(description)) {
-                message.append("\t").append(Integer.toString(num)).append(".")
+                found = true;
+                message.append(Integer.toString(num)).append(". ")
                         .append(task.toString()).append("\n");
             }
             num++;
         }
-        return message.toString().replaceFirst("\n$", "");
+        if (found) {
+            return message.toString().replaceFirst("\n$", "");
+        } else {
+            return "No matching tasks found...";
+        }
     }
 
     @Override
@@ -87,7 +94,7 @@ public class TaskList implements Iterable<Task> {
         StringBuilder message = new StringBuilder();
         int num = 1;
         for (Task task: tasks) {
-            message.append("\t").append(Integer.toString(num)).append(".")
+            message.append(Integer.toString(num)).append(". ")
                     .append(task.toString()).append("\n");
             num++;
         }

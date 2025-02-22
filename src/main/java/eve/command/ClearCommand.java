@@ -19,7 +19,7 @@ public class ClearCommand implements Command {
     public String execute(TaskList taskList, Storage storage) throws EveException {
         taskList.clear();
         storage.writeToFile(taskList);
-        return "All the tasks in your list are cleared.";
+        return "Yay all the tasks in your list are cleared.";
     }
 
     public boolean isExit() {

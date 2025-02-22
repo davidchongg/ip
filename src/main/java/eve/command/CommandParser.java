@@ -41,6 +41,9 @@ public class CommandParser {
         case "find":
             try {
                 String description = tokens[1];
+                if (description.isBlank()) {
+                    throw new IncompleteCommandException();
+                }
                 switch (command) {
                 case "mark":
                     try {
