@@ -43,7 +43,7 @@ public class MainWindow extends AnchorPane {
      */
     public void showWelcomeMessage() {
         dialogContainer.getChildren().addAll(
-                DialogBox.getDukeDialog(eve.getWelcomeMessage(), dukeImage)
+                DialogBox.getDukeDialog(eve.getWelcomeMessage(), dukeImage, "normal")
         );
     }
 
@@ -55,9 +55,10 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = eve.getResponse(input);
+        String labelType = eve.getLabelType();
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getDukeDialog(response, dukeImage, labelType)
         );
         userInput.clear();
         if (eve.isCloseWindow()) {

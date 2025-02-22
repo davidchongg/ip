@@ -14,6 +14,7 @@ public class Eve {
     private boolean isExit = false;
     private boolean isCloseWindow = false;
     private final Storage storage;
+    private String labelType = "normal";
 
     /**
      * Creates an instance of Eve with ui and storage.
@@ -35,8 +36,10 @@ public class Eve {
             output = command.execute(taskList, storage);
             isExit = command.isExit();
             isCloseWindow = command.isCloseWindow();
+            labelType = "normal";
         } catch (EveException ex) {
             output = ex.getMessage();
+            labelType = "error";
         }
         return output;
     }
@@ -61,5 +64,12 @@ public class Eve {
      */
     public boolean isCloseWindow() {
         return isCloseWindow;
+    }
+
+    /**
+     * Return the type of label to be displayed on the ui.
+     */
+    public String getLabelType() {
+        return labelType;
     }
 }
