@@ -18,7 +18,7 @@ public class SortCommand implements Command {
         taskList.sort();
         storage.writeToFile(taskList);
         StringBuilder message = new StringBuilder();
-        message.append("The tasks in your list has been sorted based on their dates.")
+        message.append("The tasks in your list has been sorted based on their dates. ")
                 .append("Here are the tasks in your list now:\n")
                 .append(taskList);
         return message.toString();
