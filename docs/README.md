@@ -10,7 +10,7 @@ Eve is a personal assistant that frees your mind of having to remember things yo
 ## Quick Start
 
 1. Ensure you have Java 17 or above installed on your computer.
-1. Download the latest Meep.jar file from the [releases page](https://github.com/tata32000/ip/releases).
+1. Download the latest Meep.jar file from the [releases page](https://github.com/davidchongg/ip/releases/tag/A-Release).
 1. Double-click the downloaded Meep.jar file to launch the application. If that does not work, open a terminal and run
    `java -jar Meep.jar`.
 
